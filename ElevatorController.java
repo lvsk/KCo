@@ -3,8 +3,8 @@ package main.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.ElevatorStatusEnum;
 import main.domain.Elevator;
+import main.enums.ElevatorStatusEnum;
 
 public class ElevatorController {
 	private List<Elevator> elevatorList;

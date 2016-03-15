@@ -6,16 +6,22 @@ public class ElevatorUser implements Runnable{
 	private int startFloor;
 	private int endFloor;
 	
+	private Thread elevUsrthread;
+	
 	public ElevatorUser(Integer eUId, int stFl, int edFl){
 		this.elevatorUserId = eUId;
 		this.startFloor = stFl;
 		this.endFloor = edFl;
+		this.elevUsrthread = new Thread(this, String.valueOf(eUId));
 	}
+	
+	 public Thread getElevatorUserThread(){
+		 return this.elevUsrthread;
+	 }
 	
 	@Override
 	public void run() {
-		// TODO
-		
+		//TODO Call for elevator, ride and exit		
 	}
 
 	public Integer getElevatorUserId() {

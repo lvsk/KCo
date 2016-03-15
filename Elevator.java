@@ -1,6 +1,6 @@
 package main.domain;
 
-import main.ElevatorStatusEnum;
+import main.enums.ElevatorStatusEnum;
 
 public class Elevator implements Runnable{
 	private Integer elevatorId;
@@ -9,10 +9,17 @@ public class Elevator implements Runnable{
 	private int numOfFloors;
 	private ElevatorStatusEnum status;
 	
+	private Thread elevThread;
+	
 	public Elevator(Integer elevatorId, int currentFloor, ElevatorStatusEnum initialStatus){		
 		this.elevatorId = elevatorId;
 		this.currentFloor = currentFloor;
 		this.status = initialStatus;
+		this.elevThread = new Thread(this, String.valueOf(elevatorId));
+	}
+	
+	public Thread getElevatorThread(){
+		return this.elevThread;
 	}
 	
 	@Override
