@@ -2,6 +2,8 @@ package main.test;
 
 import java.util.Scanner;
 
+import main.service.ElevatorController;
+
 public class RunElevatorSimulator {
 	public static void main(String[] args) {		
 		//Initialize the elevator simulation with the desired number of elevators, and the desired number of floors.
@@ -28,5 +30,8 @@ public class RunElevatorSimulator {
 		//Elevator thread
 		
 		//ElevatorUser thread
+		
+		//Create elevator controller, with list of elevators in initial state(Idle)
+		ElevatorController elevatorController = new ElevatorController(noOfElevators);
 	}
 }

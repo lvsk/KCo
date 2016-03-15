@@ -1,14 +1,18 @@
 package main.domain;
 
+import main.ElevatorStatusEnum;
+
 public class Elevator implements Runnable{
 	private Integer elevatorId;
 	private int currentFloor;
 	private int numOfTrips;
 	private int numOfFloors;
+	private ElevatorStatusEnum status;
 	
-	public Elevator(Integer elevatorId, int currentFloor){		
+	public Elevator(Integer elevatorId, int currentFloor, ElevatorStatusEnum initialStatus){		
 		this.elevatorId = elevatorId;
 		this.currentFloor = currentFloor;
+		this.status = initialStatus;
 	}
 	
 	@Override
@@ -46,5 +50,13 @@ public class Elevator implements Runnable{
 
 	public void setNumOfFloors(int numOfFloors) {
 		this.numOfFloors = numOfFloors;
+	}
+
+	public ElevatorStatusEnum getStatus() {
+		return status;
+	}
+
+	public void setStatus(ElevatorStatusEnum status) {
+		this.status = status;
 	}
 }
