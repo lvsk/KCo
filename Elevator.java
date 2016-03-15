@@ -31,7 +31,7 @@ public class Elevator implements Runnable{
 	}
 	
 	@Override
-	public void run() {
+	public void run() {		
 		//Check for pending requests
 		while(elevatorController.getWaitingElevUserRequestList() != null && !elevatorController.getWaitingElevUserRequestList().isEmpty()){
 			for(ElevatorUser elevatorUser : elevatorController.getWaitingElevUserRequestList()){

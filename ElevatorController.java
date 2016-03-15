@@ -49,6 +49,22 @@ public class ElevatorController {
 		//Loop through the start and end floor and report the floor
 		//2. Each elevator will report as is moves from floor to floor.
 		//Calculate number of floors
+		int elevatorCurrentFloor = elevator.getCurrentFloor();
+		if(elevatorCurrentFloor < elevatorUser.getStartFloor()){ //Move up
+			for(int i = elevatorCurrentFloor; i <= elevatorUser.getStartFloor() ; i++){
+				System.out.println("Moving up - Elevator " + elevator.getElevatorId() + " travelling towards user request " + elevatorUser.getElevatorUserId() + " is on " + i  + " floor.");
+			}
+		} else { //Move down
+			for(int i = elevatorCurrentFloor; i > elevatorUser.getStartFloor() ; i--){
+				System.out.println("Moving down - Elevator " + elevator.getElevatorId() + " travelling towards user request " + elevatorUser.getElevatorUserId() + " is on " + i  + " floor.");
+			}
+		}
+		
+		elevator.setNumOfFloors(elevator.getNumOfFloors() + Math.abs(elevatorUser.getStartFloor() - elevatorUser.getEndFloor()));
+		elevator.setCurrentFloor(elevatorUser.getStartFloor());
+		List<ElevatorUser> addUserRequesttoList = elevator.getUserRequestList();
+		addUserRequesttoList.add(elevatorUser);
+		elevator.setUserRequestList(addUserRequesttoList);
 		return elevator;
 	}
 	
@@ -58,6 +74,24 @@ public class ElevatorController {
 		//elevator door opens
 		//loop through the user request start and end floor and report the floor traveling
 		//elevator door closes
+		System.out.println("Elevator " + elevator.getElevatorId() + " door opens." );		
+		System.out.println("Elevator User " + elevatorUser.getElevatorUserId() + " enters Elevator " + elevator.getElevatorId());
+		System.out.println("Elevator " + elevator.getElevatorId() + " door closes." );
+		int startFloor = elevatorUser.getStartFloor();
+		int endFloor = elevatorUser.getEndFloor();
+		
+		elevator.isOccupied();
+		elevator.setStatus(ElevatorStatusEnum.MOVING);
+		
+		if(startFloor < endFloor){ //Move Up
+			for(int i = startFloor + 1; i <= endFloor ; i++){
+				System.out.println("Moving up - Elevator " + elevator.getElevatorId() + " taking user " + elevatorUser.getElevatorUserId() + " is on " + i  + " floor.");
+			}
+		} else { //Move down
+			for(int i = startFloor-1; i >= endFloor ; i--){
+				System.out.println("Moving down - Elevator " + elevator.getElevatorId() + " taking user " + elevatorUser.getElevatorUserId() + " is on " + i  + " floor.");
+			}
+		}
 	}
 	
 	public void exitElevator(Elevator elevator, ElevatorUser elevatorUser){

@@ -72,6 +72,8 @@ public class RunElevatorSimulator {
 			}
 		}
 		
+		//Check any Elevator in Service state, reset to Idle state, will become available for waiting user request
+		
 		//Execute waiting elevator user requests for each elevator
         for (ElevatorUser elevatorUser : elevatorController.getWaitingElevUserRequestList()){
         	try {

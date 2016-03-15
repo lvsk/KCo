@@ -1,5 +1,5 @@
 package main.enums;
 
 public enum ElevatorStatusEnum {
-	IDLE, MOVING, SERVICE, LOADING, UNLOADING;
+	IDLE, MOVING, SERVICE;
 }
