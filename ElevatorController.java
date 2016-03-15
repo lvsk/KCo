@@ -48,20 +48,37 @@ public class ElevatorController {
 		//Make sure selected elevator is on requested floor, otherwise move the elevator to the requested start floor
 		//Loop through the start and end floor and report the floor
 		//2. Each elevator will report as is moves from floor to floor.
-		
+		//Calculate number of floors
 		return elevator;
 	}
 	
 	public void rideElevator(Elevator elevator, ElevatorUser elevatorUser){
+		//3. Each elevator will report when it opens or closes its doors.
 		
+		//elevator door opens
+		//loop through the user request start and end floor and report the floor traveling
+		//elevator door closes
 	}
 	
 	public void exitElevator(Elevator elevator, ElevatorUser elevatorUser){
+		/*3. Each elevator will report when it opens or closes its doors.
+		8. The elevator should keep track of how many trips it has made, and how many floors it
+		has passed. The elevator should go into maintenance mode after 100 trips, and stop
+		functioning until serviced, therefore not be available for elevator calls.*/
 		
+		//elevator door opens
+		//Calculate number of floors
+		//Add a trip to this elevator
+		//Check elevator has reached 100 trips and set status to SERVICE
+		elevator.setStatus(ElevatorStatusEnum.SERVICE);
+		//Check anymore requests in the elevator else status to IDLE, unoccupied
+		elevator.setStatus(ElevatorStatusEnum.IDLE);
+		
+		//elevator door closes
 	}
 	
 	/* Find elevator - Criteria
-	 * When an elevator request is made, the unoccupied elevator closest to it will answer the call, unless an occupied elevator is moving and 
+	 * 7. When an elevator request is made, the unoccupied elevator closest to it will answer the call, unless an occupied elevator is moving and 
 	 * will pass that floor on its way. 
 	 * The exception is that if an unoccupied elevator is already stopped at that floor, then it will always have the highest priority answering that call.
 	 * The elevator should go into maintenance mode after 100 trips, and stop functioning until serviced, therefore not be available for elevator calls.

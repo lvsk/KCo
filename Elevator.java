@@ -32,7 +32,19 @@ public class Elevator implements Runnable{
 	
 	@Override
 	public void run() {
-		//TODO
+		//Check for pending requests
+		while(elevatorController.getWaitingElevUserRequestList() != null && !elevatorController.getWaitingElevUserRequestList().isEmpty()){
+			for(ElevatorUser elevatorUser : elevatorController.getWaitingElevUserRequestList()){
+				//Call elevator
+				Elevator assignedElevator = elevatorController.callElevator(elevatorUser);
+				if(assignedElevator != null){
+					//Ride elevator
+					elevatorController.rideElevator(assignedElevator, elevatorUser);
+					//Exit elevator
+					elevatorController.exitElevator(assignedElevator, elevatorUser);
+				}
+			}
+		}
 	}
 
 	public Integer getElevatorId() {
