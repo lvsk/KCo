@@ -1,5 +1,7 @@
 package main.domain;
 
+import main.service.ElevatorController;
+
 public class ElevatorUser implements Runnable{
 
 	private Integer elevatorUserId;
@@ -8,11 +10,14 @@ public class ElevatorUser implements Runnable{
 	
 	private Thread elevUsrthread;
 	
-	public ElevatorUser(Integer eUId, int stFl, int edFl){
+	private ElevatorController elevatorController;
+	
+	public ElevatorUser(Integer eUId, int stFl, int edFl, ElevatorController elevatorController){
 		this.elevatorUserId = eUId;
 		this.startFloor = stFl;
 		this.endFloor = edFl;
 		this.elevUsrthread = new Thread(this, String.valueOf(eUId));
+		this.elevatorController = elevatorController;
 	}
 	
 	 public Thread getElevatorUserThread(){
@@ -21,7 +26,14 @@ public class ElevatorUser implements Runnable{
 	
 	@Override
 	public void run() {
-		//TODO Call for elevator, ride and exit		
+		//Call elevator
+		Elevator assignedElevator = elevatorController.callElevator(this);
+		if(assignedElevator != null){
+			//Ride elevator
+			elevatorController.rideElevator(assignedElevator, this);
+			//Exit elevator
+			elevatorController.exitElevator(assignedElevator, this);
+		}	
 	}
 
 	public Integer getElevatorUserId() {
