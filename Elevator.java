@@ -1,5 +1,8 @@
 package main.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import main.enums.ElevatorStatusEnum;
 import main.service.ElevatorController;
 
@@ -8,10 +11,12 @@ public class Elevator implements Runnable{
 	private int currentFloor;
 	private int numOfTrips;
 	private int numOfFloors;
+	private boolean occupied;
 	private ElevatorStatusEnum status;
 	
 	private Thread elevThread;
 	private ElevatorController elevatorController;
+	private List<ElevatorUser> userRequestList = new ArrayList<>();	
 	
 	public Elevator(Integer elevatorId, int currentFloor, ElevatorStatusEnum initialStatus, ElevatorController elevatorController){		
 		this.elevatorId = elevatorId;
@@ -68,5 +73,21 @@ public class Elevator implements Runnable{
 
 	public void setStatus(ElevatorStatusEnum status) {
 		this.status = status;
+	}
+	
+	public boolean isOccupied() {
+		return occupied;
+	}
+
+	public void setOccupied(boolean occupied) {
+		this.occupied = occupied;
+	}
+	
+	public List<ElevatorUser> getUserRequestList() {
+		return userRequestList;
+	}
+
+	public void setUserRequestList(List<ElevatorUser> userRequestList) {
+		this.userRequestList = userRequestList;
 	}
 }

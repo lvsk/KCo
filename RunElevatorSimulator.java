@@ -43,7 +43,7 @@ public class RunElevatorSimulator {
 			while(randomStartFloor == randomEndFloor){
 				randomEndFloor = ThreadLocalRandom.current().nextInt(groundFloor, noOfFloors + 1);
 			}
-			ElevatorUser elevatorUser = new ElevatorUser(i, randomStartFloor, randomEndFloor);
+			ElevatorUser elevatorUser = new ElevatorUser(i, randomStartFloor, randomEndFloor, elevatorController);
 			elevatorUserList.add(elevatorUser);
 		}
 
